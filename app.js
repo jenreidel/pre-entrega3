@@ -53,19 +53,23 @@ class Carrito{
     }
 
     quitar(id){
-
+        // Resto o borro elementos del carrito trayendo su ID.
         const indice = this.carrito.findIndex((producto) => producto.id === id);
         if (this.carrito[indice].cantidad >1) {
             this.carrito[indice].cantidad -= 1;
         } else {
             this.carrito.splice(indice, 1); // Si hay más de 1 unidad resta 1, sino con este método, lo borra del carrito.
         }
+        // Actualizo el carrito en el HTML
         this.listar();
     }
 
-    // Redibujo el contenido del array del carrito
+    // Redibujo el contenido del array del carrito. Lo llamamos siempre que hay que actualizarlo.
     listar(){
-        divCarrito.innerText = "";
+        // Reinicio los dos valores por las dudas. 
+        this.total = 0;
+        this.totalProductos = 0;
+        divCarrito.innerHTML = "";
         for (const producto of this.carrito) {
             divCarrito.innerHTML += `
                 <div class="producto">
@@ -75,14 +79,20 @@ class Carrito{
                     <button class="btnQuitar" data-id="${producto.id}">Quitar del Carrito</button>
                 </div>
             `;
+            // Actualizo los totales
+            this.total += producto.precio * producto.cantidad;
+            this.totalProductos += producto.cantidad;
         }
         // Botones de Quitar
-        const botonesQuitar = document.querySelectorAll("btnQuitar");
+        const botonesQuitar = document.querySelectorAll(".btnQuitar");
         for (const boton of botonesQuitar){
-            boton.addEventListener = (event) => {
+            boton.addEventListener("click", (event) => {
                 this.quitar(Number(boton.dataset.id)); // le aplico la funcion 'Number' porque la comparación que hacemos en el método 'quitar' es estricta. Necesita si o si ser un número y 'dataset' me trae siempre un string.
-            }
+            });
         }
+        // Actualizo las variables del carrito.
+        spanCantidadProductos.innerText = this.totalProductos;
+        spanTotalCarrito.innerText = this.total;
     }
 }
 
@@ -103,12 +113,12 @@ const baseDatos = new BaseDeDatos;
 // Elementos
 const divProductos = document.querySelector("#productos");
 const divCarrito = document.querySelector("#carrito");
-// const elementoCredito = document.querySelector("#credito");
-// const elementoCarrito = document.querySelector("#carrito");
-// elementoCredito.innerText = credito;
+const spanCantidadProductos = document.querySelector("#cantidadProductos");
+const spanTotalCarrito = document.querySelector("#totalCarrito");
 
 // Llamamos a la función
 cargarProductos();
+
 // FUNCIONES REGULARES
 
 // Muestra en el HTML los productos que tengo en la base de datos 
