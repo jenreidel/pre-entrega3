@@ -2,6 +2,7 @@ body {
     background-image: url(../img/depositphoto-16.jpg);
     font-family: 'Ysabeau Infant', sans-serif;
 }
+/* Comento mis estilos hasta que sepa cómo editar mis cards de bootstrap con DOM.
 ul {
     list-style: none;
     padding: 0;
@@ -25,7 +26,7 @@ li {
 }
 .planta:hover {
     background-color: rgba(0, 0, 0, 0.2);
-}
+} */
 .producto {
     display: flex;
     flex-direction: row;

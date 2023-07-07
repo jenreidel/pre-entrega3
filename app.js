@@ -31,9 +31,13 @@ class BaseDeDatos{
 // Clase Carrito donde van a estar los productos a comprar
 class Carrito{
     constructor(){
-        this.carrito = [];
+        // 'JSON.parse' me convierte el string a array para que JavaScript lo pueda usar.
+        const carritoStorage = JSON.parse(localStorage.getItem("carrito"));
+        // Le digo que si hay algo en el storage, me lo traiga, sino que me deje el array vacío.
+        this.carrito = carritoStorage || [];
         this.total = 0;
         this.totalProductos = 0;
+        this.listar(); // Que me muestre lo que tengo listado ni bien carga la página con el objeto carrito creado, va a llamar al constructor. El constructor lo trae del storage y lo muestra en mi HTML.
     }
 
     estaEnCarrito(productoCarrito){
@@ -48,6 +52,10 @@ class Carrito{
         } else {
             // Agregalo al carrito
             this.carrito.push({...producto, cantidad: 1});
+            // Cada vez que actualizamos el carrito, lo guardamos en el storage.
+            // Para guardar un array tenemos que usar JSON.
+            // localStorage sólo acepta strings, usando JSON.stringify lo convertimos de array a string y lo guardamos en 'this.carrito'
+            localStorage.setItem("carrito", JSON.stringify(this.carrito));
         }
         this.listar();
     }
@@ -55,12 +63,14 @@ class Carrito{
     quitar(id){
         // Resto o borro elementos del carrito trayendo su ID.
         const indice = this.carrito.findIndex((producto) => producto.id === id);
-        if (this.carrito[indice].cantidad >1) {
+        if (this.carrito[indice].cantidad > 1) {
             this.carrito[indice].cantidad -= 1;
         } else {
             this.carrito.splice(indice, 1); // Si hay más de 1 unidad resta 1, sino con este método, lo borra del carrito.
         }
         // Actualizo el carrito en el HTML
+        // Guardo en el localStorage aca también porque estamos actualizando el carrito.
+        localStorage.setItem("carrito", JSON.stringify(this.carrito));
         this.listar();
     }
 
@@ -108,7 +118,7 @@ class Producto{
 }
 
 // Instanciamos el Objeto Base de Datos
-const baseDatos = new BaseDeDatos;
+const baseDatos = new BaseDeDatos();
 
 // Elementos
 const divProductos = document.querySelector("#productos");
@@ -147,32 +157,3 @@ function cargarProductos(){
 
 // Creo el objeto carrito. Lo ponemos abajo de todo para que ya todo esté instanciado, listo y vinculado para ser agregado al carrito.
 const carrito = new Carrito();
-
-
-// function comprar(planta){
-//     if (credito - planta.precio <= -1){
-//         alert("No tenés suficiente crédito para comprar el producto " + planta.nombre);
-//         return;
-//     }
-//     carrito.push(planta);
-//     credito = credito - planta.precio;
-//     actualizarHTML();
-// }
-
-// function devolver(indice) {
-//     const producto = carrito[indice];
-//     credito = credito + producto.precio;
-//     carrito.splice(indice, 1);
-//     actualizarHTML(); // Actualizo el HTML
-// }
-
-// // Se encarga de renderizar todos los productos en el carrito
-// function actualizarHTML() {
-//     elementoCarrito.innerHTML = "";
-//     for (const producto of carrito){
-//         let indicePlanta = carrito.indexOf(producto);
-//         let elementoPlanta = `<div class="planta" onclick="devolver(${indicePlanta})">${producto.nombre}</div>`;
-//         elementoCarrito.innerHTML += elementoPlanta;
-//     }
-//     elementoCredito.innerText = credito;
-// }
