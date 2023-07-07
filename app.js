@@ -49,7 +49,40 @@ class Carrito{
             // Agregalo al carrito
             this.carrito.push({...producto, cantidad: 1});
         }
-        console.log(this.carrito);
+        this.listar();
+    }
+
+    quitar(id){
+
+        const indice = this.carrito.findIndex((producto) => producto.id === id);
+        if (this.carrito[indice].cantidad >1) {
+            this.carrito[indice].cantidad -= 1;
+        } else {
+            this.carrito.splice(indice, 1); // Si hay más de 1 unidad resta 1, sino con este método, lo borra del carrito.
+        }
+        this.listar();
+    }
+
+    // Redibujo el contenido del array del carrito
+    listar(){
+        divCarrito.innerText = "";
+        for (const producto of this.carrito) {
+            divCarrito.innerHTML += `
+                <div class="producto">
+                    <h2>${producto.nombre}</h2>
+                    <p>$${producto.precio}</p>
+                    <p>Cantidad: ${producto.cantidad}</p>
+                    <button class="btnQuitar" data-id="${producto.id}">Quitar del Carrito</button>
+                </div>
+            `;
+        }
+        // Botones de Quitar
+        const botonesQuitar = document.querySelectorAll("btnQuitar");
+        for (const boton of botonesQuitar){
+            boton.addEventListener = (event) => {
+                this.quitar(Number(boton.dataset.id)); // le aplico la funcion 'Number' porque la comparación que hacemos en el método 'quitar' es estricta. Necesita si o si ser un número y 'dataset' me trae siempre un string.
+            }
+        }
     }
 }
 
@@ -69,6 +102,7 @@ const baseDatos = new BaseDeDatos;
 
 // Elementos
 const divProductos = document.querySelector("#productos");
+const divCarrito = document.querySelector("#carrito");
 // const elementoCredito = document.querySelector("#credito");
 // const elementoCarrito = document.querySelector("#carrito");
 // elementoCredito.innerText = credito;
