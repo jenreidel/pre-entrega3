@@ -6,17 +6,17 @@
 // Simulación de base de datos. 
 class BaseDeDatos{
     constructor(){
-        this.carrito = []; // Array donde guardamos todos los productos en carrito.
+        this.productos = []; // Array donde guardamos todos los productos en carrito.
         // Cargamos los productos
         this.agregarRegistro(1, "Dieffenbachia", 3300, "Plantas", "dieffenbachia.jpg");
         this.agregarRegistro(2, "Potus", 3000, "Plantas", "potus.JPG");
         this.agregarRegistro(3, "Sanseviera", 2900, "Plantas", "sanseviera.JPG");
-        this.agregarRegistro(4, "Piedras", 100, "Plantas", "piedras.jpg");
+        this.agregarRegistro(4, "Piedras", 100, "Accesorios", "piedras.jpg");
     }
 
     agregarRegistro(id, nombre, precio, categoria, imagen){
         const producto = new Producto(id, nombre, precio, categoria, imagen);
-        this.carrito.push(producto);
+        this.productos.push(producto);
     }
 
     traerRegistros(){
@@ -47,10 +47,12 @@ const baseDatos = new BaseDeDatos;
 
 // Elementos
 const divProductos = document.querySelector("#productos");
-const elementoCredito = document.querySelector("#credito");
-const elementoCarrito = document.querySelector("#carrito");
-elementoCredito.innerText = credito;
+// const elementoCredito = document.querySelector("#credito");
+// const elementoCarrito = document.querySelector("#carrito");
+// elementoCredito.innerText = credito;
 
+// Llamamos a la función
+cargarProductos();
 // FUNCIONES REGULARES
 
 // Muestra en el HTML los productos que tengo en la base de datos 
@@ -62,7 +64,7 @@ function cargarProductos(){
             <div class="producto">
                 <h2>${producto.nombre}</h2>
                 <p>${producto.precio}</p>
-                <img src="img/${producto.imagen}"/>
+                <img src="img/${producto.imagen}" width="150"/>
                 <button>Agregar al Carrito</button>
         `;
     }
