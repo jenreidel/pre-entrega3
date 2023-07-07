@@ -41,14 +41,15 @@ class Carrito{
     }
 
     agregar(producto){
-        let productoCarrito = this.estaEnCarrito(producto);
-        if (productoCarrito) {
+        let productoEnCarrito = this.estaEnCarrito(producto);
+        if (productoEnCarrito) {
             // Si encuentra uno igual, que me sume la cantidad
-            productoCarrito.cantidad += 1;
+            productoEnCarrito.cantidad += 1;
         } else {
             // Agregalo al carrito
             this.carrito.push({...producto, cantidad: 1});
         }
+        console.log(this.carrito);
     }
 }
 
@@ -84,8 +85,8 @@ function cargarProductos(){
         divProductos.innerHTML += `
             <div class="producto">
                 <h2>${producto.nombre}</h2>
-                <p>${producto.precio}</p>
-                <img src="img/${producto.imagen}" width="150"/>
+                <h5>$${producto.precio}.-</h5>
+                <img src="img/${producto.imagen}" width="250"/>
                 <button class="btnAgregar" data-id="${producto.id}">Agregar al Carrito</button>
         `;
     }
@@ -95,11 +96,13 @@ function cargarProductos(){
         boton.addEventListener("click", (event) => {
             const id = Number(boton.dataset.id);
             const producto = baseDatos.registroPorId(id);
-            console.log("Agregaste:", producto);
+            carrito.agregar(producto);
         });
     }
 }
 
+// Creo el objeto carrito. Lo ponemos abajo de todo para que ya todo esté instanciado, listo y vinculado para ser agregado al carrito.
+const carrito = new Carrito();
 
 
 // function comprar(planta){

@@ -1,5 +1,6 @@
 body {
     background-image: url(../img/depositphoto-16.jpg);
+    font-family: 'Ysabeau Infant', sans-serif;
 }
 ul {
     list-style: none;
@@ -24,4 +25,12 @@ li {
 }
 .planta:hover {
     background-color: rgba(0, 0, 0, 0.2);
+}
+.producto {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+    margin: 5px;
+    padding: 10px;
 }
