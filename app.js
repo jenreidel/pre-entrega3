@@ -63,36 +63,37 @@ function cargarProductos(){
                 <h2>${producto.nombre}</h2>
                 <p>${producto.precio}</p>
                 <img src="img/${producto.imagen}"/>
+                <button>Agregar al Carrito</button>
         `;
     }
 }
 
 
 
-function comprar(planta){
-    if (credito - planta.precio <= -1){
-        alert("No tenés suficiente crédito para comprar el producto " + planta.nombre);
-        return;
-    }
-    carrito.push(planta);
-    credito = credito - planta.precio;
-    actualizarHTML();
-}
+// function comprar(planta){
+//     if (credito - planta.precio <= -1){
+//         alert("No tenés suficiente crédito para comprar el producto " + planta.nombre);
+//         return;
+//     }
+//     carrito.push(planta);
+//     credito = credito - planta.precio;
+//     actualizarHTML();
+// }
 
-function devolver(indice) {
-    const producto = carrito[indice];
-    credito = credito + producto.precio;
-    carrito.splice(indice, 1);
-    actualizarHTML(); // Actualizo el HTML
-}
+// function devolver(indice) {
+//     const producto = carrito[indice];
+//     credito = credito + producto.precio;
+//     carrito.splice(indice, 1);
+//     actualizarHTML(); // Actualizo el HTML
+// }
 
-// Se encarga de renderizar todos los productos en el carrito
-function actualizarHTML() {
-    elementoCarrito.innerHTML = "";
-    for (const producto of carrito){
-        let indicePlanta = carrito.indexOf(producto);
-        let elementoPlanta = `<div class="planta" onclick="devolver(${indicePlanta})">${producto.nombre}</div>`;
-        elementoCarrito.innerHTML += elementoPlanta;
-    }
-    elementoCredito.innerText = credito;
-}
+// // Se encarga de renderizar todos los productos en el carrito
+// function actualizarHTML() {
+//     elementoCarrito.innerHTML = "";
+//     for (const producto of carrito){
+//         let indicePlanta = carrito.indexOf(producto);
+//         let elementoPlanta = `<div class="planta" onclick="devolver(${indicePlanta})">${producto.nombre}</div>`;
+//         elementoCarrito.innerHTML += elementoPlanta;
+//     }
+//     elementoCredito.innerText = credito;
+// }

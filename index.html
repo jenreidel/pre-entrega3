@@ -9,11 +9,13 @@
     <title>Plantas de Interior</title>
 </head>
 <body>
-    <Header>
+    <header>
         <img src="img/banner-plantas.png" width="100%">
+    </header>
+    <main>
         <h1>Oxigenate</h1>
         <h2>Plantas de Interior y Accesorios</h2>
-        <div class="flex-card">
+        <!-- <div class="flex-card">
             <div class="card" style="width: 18rem;">
                 <img src="img/dieffenbachia.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -50,15 +52,18 @@
                   <a onclick="comprar(piedras)" class="btn btn-primary">Agregar al carrito</a>
                 </div>
             </div>
+        </div> -->
+        <div id="productos">
+            <!-- Acá van a ir mis productos guardados en la base de datos -->
         </div>
-    </Header>
+    </main>
     <section>
         <h4>Mi carrito</h4>
         <h6>(Para quitar elementos de tu carrito, sólo tenés que hacer click sobre ellos.)</h6>
         <div id="carrito">
-            <!--Acá vamos a ir guardando los productos que queremos comprar-->
+          <!-- Acá vamos a ir guardando los productos que queremos comprar -->
         </div>
-        <h4>Crédito disponible: <span id="credito"></span></h4>
+        <h3>Total: $<span id="totalCarrito">0</span></h3>
     </section>
     <script src="app.js"></script>
 </body>
