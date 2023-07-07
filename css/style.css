@@ -1,0 +1,27 @@
+body {
+    background-image: url(../img/depositphoto-16.jpg);
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.card:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.flex-card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 2%;
+}
+.planta {
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.planta:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+}
