@@ -24,7 +24,31 @@ class BaseDeDatos{
     }
 
     registroPorId(id){
-        return this.productos.find((producto) => producto.id ===id);
+        return this.productos.find((producto) => producto.id === id);
+    }
+}
+
+// Clase Carrito donde van a estar los productos a comprar
+class Carrito{
+    constructor(){
+        this.carrito = [];
+        this.total = 0;
+        this.totalProductos = 0;
+    }
+
+    estaEnCarrito(productoCarrito){
+        return this.carrito.find((producto) => producto.id === productoCarrito.id);
+    }
+
+    agregar(producto){
+        let productoCarrito = this.estaEnCarrito(producto);
+        if (productoCarrito) {
+            // Si encuentra uno igual, que me sume la cantidad
+            productoCarrito.cantidad += 1;
+        } else {
+            // Agregalo al carrito
+            this.carrito.push({...producto, cantidad: 1});
+        }
     }
 }
 
@@ -38,9 +62,6 @@ class Producto{
         this.imagen = imagen;
     }
 }
-
-// Crédito Disponible
-let credito = 9500;
 
 // Instanciamos el Objeto Base de Datos
 const baseDatos = new BaseDeDatos;
@@ -65,8 +86,17 @@ function cargarProductos(){
                 <h2>${producto.nombre}</h2>
                 <p>${producto.precio}</p>
                 <img src="img/${producto.imagen}" width="150"/>
-                <button>Agregar al Carrito</button>
+                <button class="btnAgregar" data-id="${producto.id}">Agregar al Carrito</button>
         `;
+    }
+    // Botones para agregar los productos al carrito
+    const botonesAgregar = document.querySelectorAll(".btnAgregar");
+    for (const boton of botonesAgregar){
+        boton.addEventListener("click", (event) => {
+            const id = Number(boton.dataset.id);
+            const producto = baseDatos.registroPorId(id);
+            console.log("Agregaste:", producto);
+        });
     }
 }
 
