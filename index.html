@@ -3,70 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstraap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-PJsj/BTMqILvmcej7ulplguok8ag4xFTPryRq8xevL7eBYSmpXKcbNVuy+P0RMgq" crossorigin="anonymous">
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Infant:wght@200;300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@100;200;300;400&family=Ysabeau+Infant:wght@200;300&display=swap" rel="stylesheet">
+    <!-- Bootstraap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" integrity="sha384-PJsj/BTMqILvmcej7ulplguok8ag4xFTPryRq8xevL7eBYSmpXKcbNVuy+P0RMgq" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
-    <title>Plantas de Interior</title>
+    <title>Tu Jardín Interior</title>
 </head>
 <body>
     <header>
-        <img src="img/banner-plantas.png" width="100%">
+        <div class="container-fluid txtnormal">
+            <div>
+              <img id="ir-arriba" src="./img/logojardininterior.JPG" alt="logo tu jardin interior" width="20%">
+            </div>
+            <nav class="navbar navbar-expand-lg">
+              <div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="./index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="./pages/giftcard.html">Gift Card</a>
+                    </li>
+                    <li>
+                      <a class="nav-link" href="./pages/envio.html">Envíos</a>
+                    </li>
+                    <li>
+                      <a class="nav-link" href="./pages/contacto.html">Contacto</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        <img src="img/banner-jardininterior1.png" width="100%">
     </header>
     <main>
-        <h1>Plantas de Interior y Accesorios</h1>
-        <!-- Esto lo voy a dejar en suspenso hasta que pueda preguntar cómo hacer para modificar bootstrap con DOM como yo quiero porque probé y no me salió.
-        <div class="flex-card">
-            <div class="card" style="width: 18rem;">
-                <img src="img/dieffenbachia.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Dieffenbachia</h5>
-                  <p class="card-text">Reducen la cantidad de polvo en el aire y lo purifican. Aumentan la humedad del ambiente. De acuerdo con el Feng Shui, es la planta ideal para lograr los objetivos en el ámbito laboral.</p>
-                  <p>Precio $3.300.-</p>
-                  <a onclick="comprar(dieffenbachia)" class="btn btn-primary">Agregar al carrito</a>
-                </div>
+        <div>
+            <h1 class="titulo"> <strong>PLANTAS DE INTERIOR</strong> PARA VESTIR TODOS TUS AMBIENTES</h1>
+            <div>
+                <h5 class="txtnormal">No importa si son grandes, pequeñas, colgantes o si están en floreros. Tener plantas en tu casa te ayudará a decorar tu hogar y aportarle frescura. Las podés poner en el living, la cocina, el baño o en el dormitorio. Las plantas refrescan el ambiente, purifican el aire, absorben los malos olores. Encontrá la tuya y creá <strong>Tu Jardín Interior</strong>.</h5>
             </div>
-            <div class="card" style="width: 18rem;">
-                <img src="img/potus.JPG" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Potus</h5>
-                  <p class="card-text">Tiene la capacidad de purificar el aire, eliminando ciertas sustancias tóxicas de sus proximidades. Según el Feng Shui, transforma la energía negativa que se acumula en el ambiente.</p>
-                  <p>Precio $3.000.-</p>
-                  <a onclick="comprar(potus)" class="btn btn-primary">Agregar al carrito</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="img/sanseviera.JPG" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Sanseviera</h5>
-                  <p class="card-text">Se suele utilizar para purificar el aire. También es una planta recomendada por el Feng Shui para atraer buenas energías a la casa.</p>
-                  <p>Precio $2.900.-</p>
-                  <a onclick="comprar(sanseviera)" class="btn btn-primary">Agregar al carrito</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img src="img/piedras.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Piedras decorativas</h5>
-                  <p class="card-text">Una de las tantas ventajas de usarlas es que dan soluciones a problemas como humedad. Nos permite separar las hojas verdes del sustrato.</p>
-                  <p>Precio $100.-</p>
-                  <a onclick="comprar(piedras)" class="btn btn-primary">Agregar al carrito</a>
-                </div>
-            </div>
-        </div> -->
-        <div id="productos">
+        </div>
+        <div id="productos" class="txtnormal">
             <!-- Acá van a ir mis productos guardados en la base de datos -->
         </div>
     </main>
-    <section>
+    <section class="txtnormal">
         <h4>Carrito (<span id="cantidadProductos">0</span>)</h4>
         <div id="carrito">
           <!-- Acá vamos a ir guardando los productos que queremos comprar -->
         </div>
         <h3>Total: $<span id="totalCarrito">0</span></h3>
     </section>
+    <hr>
+    <footer class="txtnormal">
+        <div class="footer-centro">
+            <img src="./img/logojardininterior.JPG" alt="logo de renatta" class="img-footer" width="200px">
+        </div>
+        <div>
+            <a href="#ir-arriba"><img src="./img/irarriba1.png" alt="flecha ir arriba" width="35px" class="arriba-red"></a>
+        </div>
+        <div class="derechos">
+            <p>Desarrollado por Jenisse Reidel. Todos los derechos reservados.</p>
+        </div>
+    </footer>
     <script src="app.js"></script>
 </body>
 </html>

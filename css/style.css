@@ -1,37 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
 body {
     background-image: url(../img/depositphoto-16.jpg);
+}
+main div, section {
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.container-fluid{
+    display: flex;
+    flex-direction: row;
+    div #ir-arriba{
+        border: outset #6b705c 0.5px;
+    }
+}
+.txtnormal {
     font-family: 'Ysabeau Infant', sans-serif;
 }
-/* Comento mis estilos hasta que sepa cómo editar mis cards de bootstrap con DOM.
-ul {
-    list-style: none;
-    padding: 0;
+.titulo {
+    font-family: 'Alumni Sans', sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
-li {
-    padding: 0.5rem;
-    cursor: pointer;
+.btnAgregar {
+    font-size: large;
+    font-weight: bold;
+    padding: 4px;
+    margin-top: 20px;
+    border-radius: 5%;
+}
+.card {
+    width: 18rem;
+    margin: 20px;
+    background-color: rgba(146, 137, 124, 0.2);
 }
 .card:hover {
     background-color: rgba(0, 0, 0, 0.2);
+    font-weight: bold;
 }
-.flex-card{
+
+/* footer */
+footer{
+    color: #414438;
+}
+.footer-centro{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    margin: 2%;
+    justify-content: center;
+    padding-bottom: 10px;
 }
-.planta {
-    padding: 0.5rem;
-    cursor: pointer;
+.arriba-red{
+    border-radius: 10%;
+    position: relative;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
 }
-.planta:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-} */
-.producto {
+.no-bullet{
+    list-style: none;
+}
+.socalo-peque{
+    font-size: medium;
+}
+.derechos {
+    text-align: center;
+    font-size: small;
+}
+
+
+/* gift card*/
+
+.gift-flex{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    margin-bottom: 2%;
     align-items: center;
-    gap: 50px;
-    margin: 5px;
-    padding: 10px;
+}
+.img-bordered{
+    border-radius: 3%;
+}
+.gift-comprar {
+    border-radius: 5%;
+    padding: 4px;
+    margin: 20px;
+}
+.gift-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* envíos */
+
+
+/* contacto */
+
+.contacto-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card-horario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
